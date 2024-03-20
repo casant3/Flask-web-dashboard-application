@@ -1,0 +1,41 @@
+MONDAY:
+Debit      23
+Credit     10
+Voucher     8
+Cash        6
+
+TUESDAY:
+Debit      27
+Cash        6
+Voucher     5
+Credit      5
+
+WEDNESDAY:
+Debit      26
+Voucher    10
+Cash        6
+Credit      5
+
+THURSDAY:
+Debit      22
+Credit      5
+Cash        3
+Voucher     2
+
+FRIDAY:
+Debit      16
+Voucher     9
+Cash        6
+Credit      3
+
+SATURDAY:
+Debit      14
+Voucher     3
+Credit      2
+Cash        2
+
+SUNDAY:
+Debit      14
+Voucher     3
+Credit      2
+Cash        2

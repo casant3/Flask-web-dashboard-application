@@ -2,8 +2,7 @@
 
 {% block content %}
 
-
-<section class="dashboard">
+<section class="dashboard smaller-text">
     {% for mega in data %}
         <div class="segment">
             <p>Day: {{ mega.day }}</p>
@@ -18,4 +17,6 @@
         </div>
     {% endfor %}
 </section>
+
 {% endblock %}
+

@@ -2,6 +2,7 @@ from flask import Flask, Blueprint, render_template, request, redirect, url_for,
 from flask_sqlalchemy import SQLAlchemy
 import datetime
 from .models import Mega
+from .models import Voids
 from . import db
 import matplotlib
 matplotlib.use("Agg")
@@ -12,7 +13,7 @@ import base64
 from datetime import datetime
 import dateutil.parser
 from collections import Counter
-from sqlalchemy import func
+from sqlalchemy import func, asc, desc
 
 my_view = Blueprint("my_view", __name__)
 
@@ -64,7 +65,7 @@ def home():
         # Extract day and daily_earnings from each entry
         days.append(entry.day)
         daily_earnings.append(entry.daily_earnings)
-        
+
     highest_day_earnings = db.session.query(Mega.day, func.max(Mega.daily_earnings)).first()
     best_daily_earnings, highest_day = highest_day_earnings
 
@@ -80,7 +81,7 @@ def home():
     plt.close()
 
     graph_url = base64.b64encode(img.getvalue()).decode()
-    
+
     all_days = []
     for mega in mega_list:
         all_days.append(mega.day)
@@ -153,6 +154,56 @@ def page8():
 def page9():
     data = Mega.query.all()
     return render_template("page9.html", data = data)
+
+
+@my_view.route("/add2", methods=["POST"])    #allows post methods
+def add2():
+    if request.method == 'POST':
+            name = request.form.get("name")
+            voids = request.form.get("voids")
+            new_void= Voids(name = name, voids = voids)
+            db.session.add(new_void)   #add into db
+            db.session.commit() 
+    return redirect(url_for("my_view.page10"))
+
+@my_view.route("/page10", methods=["GET", "POST"])
+def page10():
+    sort_criteria = request.form.get("sort_criteria")
+
+    name = []
+    voids = []
+
+    entries = Voids.query.all()
+    for entry in entries:
+        name.append(entry.name)
+        voids.append(entry.voids)
+
+    if sort_criteria == "name_asc":
+        name, voids = zip(*sorted(zip(name, voids)))
+    elif sort_criteria == "name_desc":
+        name, voids = zip(*sorted(zip(name, voids), reverse=True))
+    elif sort_criteria == "voids_asc":
+        name, voids = zip(*sorted(zip(name, voids), key=lambda x: x[1]))
+    elif sort_criteria == "voids_desc":
+        name, voids = zip(*sorted(zip(name, voids), key=lambda x: x[1], reverse=True))
+
+
+
+    plt.figure(figsize=(8, 6))
+    plt.bar(name, voids)
+    plt.title('Number of Voids')
+    plt.xlabel('Name')
+    plt.ylabel('Voids')
+
+    img = BytesIO()
+    plt.savefig(img, format='png')
+    img.seek(0)
+    plt.close()
+
+    graph_url = base64.b64encode(img.getvalue()).decode()
+    return render_template("page10.html", graph_url = graph_url, sort_criteria = sort_criteria)
+
+
 
 @my_view.route("/delete/<mega_id>", methods =["POST"])
 def delete (mega_id):

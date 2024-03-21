@@ -37,11 +37,13 @@ header h1 {
     border-radius: 20px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
     padding: 20px;
-    width: 80%;
+    width: 55%;
     margin: auto;
     display: flex;
-    flex-wrap: wrap;
+    /* flex-wrap: wrap; */
     justify-content: center;
+    flex-direction: column;
+    align-items: center;
 }
 
 /* Input container styles */
@@ -89,6 +91,7 @@ button:hover {
     flex-wrap: wrap;
     justify-content: center;
     gap: 20px;
+  
 }
 
 .segment {
@@ -170,7 +173,7 @@ button:hover {
 }
 
 .images img {
-    width: 100%;
+    width: 75%;
     margin-bottom: 10px;
 }
 
@@ -181,4 +184,17 @@ input[type="number"] {
     border: 1px solid #000000;
     border-radius: 5px;
     box-sizing: border-box;
+}
+
+.smaller-text {
+    font-size: 14px;
+}
+
+.smaller-text .segment p {
+    font-size: 12px; 
+    margin-bottom: 5px;
+}
+
+.smaller-text .segment {
+    padding: 10px;
 }

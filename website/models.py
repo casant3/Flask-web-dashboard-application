@@ -10,5 +10,10 @@ class Mega(db.Model):
     best_seller = db.Column(db.String(30), default="")
     worst_seller = db.Column(db.String(30), default="")
 
+class Voids(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(30), unique = True)
+    voids = db.Column(db.Integer, default=None)
+
     # priority = db.Column(db.String, default = False)
     # category = db.Column(db.String, default = False)

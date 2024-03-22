@@ -191,7 +191,7 @@ input[type="number"] {
 }
 
 .smaller-text .segment p {
-    font-size: 12px; 
+    font-size: 20px; 
     margin-bottom: 5px;
 }
 
@@ -201,4 +201,8 @@ input[type="number"] {
 
 .expand_text {
     font-size: 1.5rem;
+}
+
+.day-dashboard {
+    flex-wrap: nowrap;
 }

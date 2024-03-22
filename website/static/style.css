@@ -2,9 +2,9 @@
 nav {
     background-color: #78290f;
     justify-content: space-evenly;
-    padding: 7px;
+    padding: 8px;
     text-align: center;
-    margin-top: 10px;
+    margin-top: 15px;
 }
 
 nav a {
@@ -26,7 +26,7 @@ header {
 header h1 {
     color: #001524;
     font-family: 'Roboto Slab', serif;
-    font-size: 3rem;
+    font-size: 4.5rem;
     text-shadow: 1px 1px 2px black;
     margin: 0px;
 }
@@ -40,9 +40,9 @@ header h1 {
     width: 55%;
     margin: auto;
     display: flex;
-    /* flex-wrap: wrap; */
+    flex-wrap: wrap;
     justify-content: center;
-    flex-direction: column;
+    /* flex-direction: column; */
     align-items: center;
 }
 
@@ -197,4 +197,8 @@ input[type="number"] {
 
 .smaller-text .segment {
     padding: 10px;
+}
+
+.expand_text {
+    font-size: 1.5rem;
 }

@@ -5,15 +5,15 @@
     <div class="data-segment">
         {% for item in data %}
             {% if item.day == 'Monday' %}
-                <div class="segment">
-                    <h2>MVP:</h2>
-                    <p>{{ item.staff_mvp }}</p>
-                    <h2>Best Seller:</h2>
-                    <p>{{ item.best_seller }}</p>
-                    <h2>Worst Seller:</h2>
-                    <p>{{ item.worst_seller }}</p>
-                    <h2>Daily Earnings:</h2>
-                    <p>£{{ item.daily_earnings }}</p>
+            <div class="segment">
+                <h2>MVP:</h2>
+                <p>{{ item.staff_mvp }}</p>
+                <h2>Best Seller:</h2>
+                <p>{{ item.best_seller }}</p>
+                <h2>Worst Seller:</h2>
+                <p>{{ item.worst_seller }}</p>
+                <h2>Daily Earnings:</h2>
+                <p>£{{ item.daily_earnings }}</p>
 
                 {% set sunday_daily_earnings = 0 %}
                     {% for sunday_item in data %}
@@ -28,7 +28,7 @@
                         <img src="{{ url_for('static', filename='pie_charts/down_arrow.jpg') }}" alt="Image 2" width="50" height="60">
                     {% endif %}
 
-                </div>
+            </div>
             {% endif %}
         {% endfor %}
     </div>
